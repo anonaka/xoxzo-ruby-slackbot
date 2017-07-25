@@ -37,6 +37,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.3)
     http_parser.rb (0.6.0)
+    httparty (0.15.6)
+      multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     json (2.1.0)
     jwt (1.5.6)
@@ -49,6 +51,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     os (0.9.6)
     public_suffix (2.0.5)
@@ -69,6 +72,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xoxzo-cloudruby (0.4.0)
+      httparty (>= 0.13.7)
 
 PLATFORMS
   ruby
@@ -79,6 +84,7 @@ DEPENDENCIES
   google-api-client
   http
   json
+  xoxzo-cloudruby
 
 BUNDLED WITH
    1.11.2
