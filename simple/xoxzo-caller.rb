@@ -36,12 +36,33 @@ EM.run do
         recipient = $1
         msg = $2
         recipient='+81'+ recipient.sub(/^0/,'') # remove if first char is 0
+
+
         ws.send({
                     type: 'message',
                     text: "こんにちは <@#{data['user']}> さん. #{recipient}に電話します。",
                     channel: data['channel']
                 }.to_json)
         res = xc.call_tts_playback(caller: caller, recipient: recipient, tts_message: msg, tts_lang:"ja")
+        if res.errors != nil
+          p res
+          exit -1
+        end
+      end
+      if text =~ /^sms *(\d+) *(.*)/
+        p 'call %s msg=<%s>' % [$1, $2]
+        caller = '05012345678'
+        recipient = $1
+        msg = $2
+        recipient='+81'+ recipient.sub(/^0/,'') # remove if first char is 0
+
+
+        ws.send({
+                    type: 'message',
+                    text: "こんにちは <@#{data['user']}> さん. #{recipient}にSMSします。",
+                    channel: data['channel']
+                }.to_json)
+        res = xc.send_sms(sender: '05012345678', recipient:recipient, message:msg )
         if res.errors != nil
           p res
           exit -1
