@@ -32,7 +32,7 @@ EM.run do
       text = data['text']
       if text =~ /^call *(\d+) *(.*)/
         p 'call %s msg=<%s>' % [$1, $2]
-        caller = '05012345678'
+        caller = '+815058386342'
         recipient = $1
         msg = $2
         recipient='+81'+ recipient.sub(/^0/,'') # remove if first char is 0
@@ -45,13 +45,13 @@ EM.run do
                 }.to_json)
         res = xc.call_tts_playback(caller: caller, recipient: recipient, tts_message: msg, tts_lang:"ja")
         if res.errors != nil
-          p res
+           p res
           exit -1
         end
       end
       if text =~ /^sms *(\d+) *(.*)/
         p 'call %s msg=<%s>' % [$1, $2]
-        caller = '05012345678'
+        caller = '+815058386342'
         recipient = $1
         msg = $2
         recipient='+81'+ recipient.sub(/^0/,'') # remove if first char is 0
